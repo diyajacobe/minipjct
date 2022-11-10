@@ -1,0 +1,352 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="#">Home</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="#">Signup</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Intro ======-->
+                <div class="section__intro u-s-m-b-60">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section__text-wrap">
+                                    <h1 class="section__heading u-c-secondary">CREATE AN ACCOUNT</h1>
+                                    {% include 'alerts_reg.html' %}
+
+                                      <script>
+                                          setTimeout(function(){
+                                            if ($('#message1').length > 0){
+                                              $('#message1').remove();
+                                              }
+                                            },4000)
+
+                                      </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Intro ======-->
+                <script>
+                 function validate()
+                {
+					var f=document.getElementById("fname").value;
+					var l=document.getElementById("lname").value;
+					var s=/^[a-zA-Z]+$/;
+						   if(f=="")
+                {
+                    document.getElementById('fn').style.display = "block";
+
+                    document.getElementById('fn').innerHTML="**Please Enter  First Name";
+                    return false;
+                }
+					if(f!="" && s.test(f)==false){
+
+						document.getElementById('fn').style.display = "block";
+						document.getElementById('fn').innerHTML = "Invalid First Name";
+						return false;
+					}
+					else{
+						document.getElementById('fn').style.display = "none";
+					}
+					 if(l=="")
+                {
+                    document.getElementById('ln').style.display = "block";
+
+                    document.getElementById('ln').innerHTML="**Please Enter  Last Name";
+                    return false;
+                }
+					if(l!="" && s.test(l)==false){
+
+						document.getElementById('ln').style.display = "block";
+						document.getElementById('ln').innerHTML = "Invalid Last Name";
+						return false;
+					}
+					else{
+						document.getElementById('ln').style.display = "none";
+					}
+
+					var a=document.getElementById("email").value;
+					var st=/^[\w\+\'\.-]+@[\w\'\.-]+\.[a-zA-Z]{2,}$/;
+					if(a=="")
+                {
+                    document.getElementById('el').style.display = "block";
+
+                    document.getElementById('el').innerHTML="**Please Enter  Email";
+                    return false;
+                }
+					if(a!="" && st.test(a)==false){
+
+						document.getElementById('el').style.display = "block";
+						document.getElementById('el').innerHTML = "Invalid Email id";
+						return false;
+					}
+					else{
+						document.getElementById('el').style.display = "none";
+					}
+
+					var ph = document.getElementById("tel").value;
+					var expr = /^[6-9]\d{9}$/;
+                    if(ph=="")
+                {
+                    document.getElementById('pe').style.display = "block";
+
+                    document.getElementById('pe').innerHTML="**Please Enter  Phone Number";
+                    return false;
+                }
+					if(ph!="" && expr.test(ph)==false){
+						document.getElementById('pe').style.display = "block";
+						document.getElementById('pe').innerHTML = "Invalid Phone number";
+						return false;
+								}
+								else{
+						document.getElementById('pe').style.display = "none";
+					}
+					 var d=document.getElementById('password').value;
+
+                     var e=document.getElementById('cpassword').value;
+                   if(d=="")
+                {
+                    document.getElementById('pss').style.display = "block";
+
+<!--                    document.getElementById('pss').innerHTML="**please enter  Password";-->
+                    return false;
+                }
+                else{
+						document.getElementById('pss').style.display = "none";
+					}
+                if(e=="")
+                {
+                    document.getElementById('cpass').style.display = "block";
+
+                    document.getElementById('cpss').innerHTML="**please enter Confirm Password";
+                    return false;
+                }
+
+                if(d!=e)
+                {
+                    document.getElementById('cpss').style.display = "block";
+
+                    document.getElementById('cpss').innerHTML="**Incorrect Password";
+                    return false;
+                }
+                        else
+                          {
+                          	document.getElementById('cpss').style.display = "none";
+
+                    return true;
+                }
+
+
+				}
+                </script>
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="row row--center">
+                            <div class="col-lg-6 col-md-8 u-s-m-b-30">
+                                <div class="l-f-o">
+                                    <div class="l-f-o__pad-box">
+                                        <h1 class="gl-h1">PERSONAL INFORMATION</h1>
+                                        <form class="l-f-o__form" action="{% url 'register' %}" method="post" onsubmit="return validate();">
+                                            {% csrf_token %}
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="fname">FIRST NAME *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" name="fname" id="fname" placeholder="First Name" onblur="return validate()" onKeyUp="return validate()" >
+                                                <span id="fn" style="color: red;"></span>
+
+
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="lname">LAST NAME *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" name="lname" id="lname" placeholder="Last Name" onblur="return validate()" onKeyUp="return validate()" >
+                                                <span id="ln" style="color: red;"></span>
+
+                                            </div>
+
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="email">E-MAIL *</label>
+
+                                                <input class="input-text input-text--primary-style" type="email" name="email" id="email" placeholder="Enter E-mail"  onblur="return validate()" onKeyUp="return validate()"  >
+                                                <span id="el" style="color: red;"></span>
+
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="tel">PHONE NUMBER *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" name="tel" id="tel" placeholder="Enter 10 digits" onblur="return validate()" onKeyUp="return validate()"  minlength="10" maxlength="10">
+                                                <span id="pe" style="color: red;"></span>
+
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="password">PASSWORD *</label>
+
+                                                <input class="input-text input-text--primary-style" type="password" name="password" id="password" placeholder="Enter Password" >
+                                                <span id="pss" style="color: red;"></span>
+
+                                                <style>
+                                                 /* The message box is shown when the user clicks on the password field */
+                                                    #message {
+                                                    display:none;
+                                                    background:#fff;
+                                                    color: #000;
+                                                    position: relative;
+                                                    padding: 20px;
+                                                    margin-top: 10px;
+                                                    }
+                                                                        #message p {
+                                                    padding: 1px 35px;
+                                                    font-size: 14px;
+                                                    }
+                                                    /* Add a green text color and a checkmark when the requirements are right */
+                                                    .valid {
+                                                    color: green;
+                                                    }
+
+                                                    .valid:before {
+                                                    position: relative;
+                                                    left: -25px;
+                                                    content: "✔";
+                                                    }
+
+                                                    /* Add a red text color and an "x" when the requirements are wrong */
+                                                    .invalid {
+                                                    color: red;
+                                                    }
+
+                                                    .invalid:before {
+                                                    position: relative;
+                                                    left: -25px;
+                                                    content: "✖";
+                                                    }
+                                                    </style>
+                                                <div id="message">
+<!--                                                    <h4 style="color:rgb(249, 164, 61) ;">Password must contain the following:</h4>-->
+                                                        <p id="letter" class="invalid">A lowercase letter</p>
+                                                        <p id="capital" class="invalid">A capital (uppercase) letter</p>
+                                                        <p id="number" class="invalid">A number</p>
+                                                        <p id="length" class="invalid">Minimum 8 characters</b></p>
+                                                     </div>
+                                                <script>
+                                        var myInput = document.getElementById("password");
+                                        var letter = document.getElementById("letter");
+                                        var capital = document.getElementById("capital");
+                                        var number = document.getElementById("number");
+                                        var length = document.getElementById("length");
+                                        myInput.onfocus = function() {
+                                        document.getElementById("message").style.display = "block";
+                                        }
+                                        myInput.onblur = function() {
+                                        document.getElementById("message").style.display = "none";
+                                        }
+                                        // When the user starts to type something inside the password field
+                                        myInput.onkeyup = function() {
+                                        // Validate lowercase letters
+                                        var lowerCaseLetters = /[a-z]/g;
+                                        if(myInput.value.match(lowerCaseLetters)) {
+                                            letter.classList.remove("invalid");
+                                            letter.classList.add("valid");
+                                        } else {
+                                            letter.classList.remove("valid");
+                                            letter.classList.add("invalid");
+                                        }
+
+                                        // Validate capital letters
+                                        var upperCaseLetters = /[A-Z]/g;
+                                        if(myInput.value.match(upperCaseLetters)) {
+                                            capital.classList.remove("invalid");
+                                            capital.classList.add("valid");
+                                        } else {
+                                            capital.classList.remove("valid");
+                                            capital.classList.add("invalid");
+                                        }
+
+                                        // Validate numbers
+                                        var numbers = /[0-9]/g;
+                                        if(myInput.value.match(numbers)) {
+                                            number.classList.remove("invalid");
+                                            number.classList.add("valid");
+                                        } else {
+                                            number.classList.remove("valid");
+                                            number.classList.add("invalid");
+                                        }
+
+                                        // Validate length
+                                        if(myInput.value.length >= 8) {
+                                            length.classList.remove("invalid");
+                                            length.classList.add("valid");
+                                        } else {
+                                            length.classList.remove("valid");
+                                            length.classList.add("invalid");
+                                        }
+                                        }
+                                    </script>
+
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="cpassword">CONFIRM PASSWORD *</label>
+
+                                                <input class="input-text input-text--primary-style" type="password" name="cpassword" id="cpassword" placeholder="Enter Password" onblur="return validate()" onKeyUp="return validate()">
+                                                <span id="cpss" style="color: red;"></span>
+
+
+                                            </div>
+                                            <div class="u-s-m-b-15">
+
+                                                <button class="btn btn--e-transparent-brand-b-2" type="submit">CREATE</button></div>
+
+                                            <a class="gl-link" href="{% url 'home' %}">Return to Store</a>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+        </div>
+        <!--====== End - App Content ======-->
+{% endblock %}
