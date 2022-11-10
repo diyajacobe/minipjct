@@ -134,7 +134,10 @@
 
 					}
 
-                var h = document.getElementById("rent").value;
+
+
+
+					var h = document.getElementById("rent").value;
 					var expr = /^[0-9]+$/;
 
 				if(h=="")
@@ -153,56 +156,20 @@
 						document.getElementById('rt').style.display = "none";
 
 					}
-					var i=document.getElementById("state").value;
-					   if(i=="")
-                {
-                    document.getElementById('sta').style.display = "block";
-
-                    document.getElementById('sta').innerHTML="**please Choose State";
-                    return false;
-                }
-                else{
-						document.getElementById('st').style.display = "none";
-
-					}
-					var j=document.getElementById("place").value;
-					   if(j=="")
-                {
-                    document.getElementById('pl').style.display = "block";
-
-                    document.getElementById('pl').innerHTML="**please Enter place";
-                    return false;
-                }
-                else{
-						document.getElementById('pl').style.display = "none";
-
-					}
-					var k=document.getElementById("street").value;
-					   if(k=="")
-                {
-                    document.getElementById('st').style.display = "block";
-
-                    document.getElementById('st').innerHTML="**please Enter Street";
-                    return false;
-                }
-                else{
-						document.getElementById('st').style.display = "none";
-
-					}
-					var l = document.getElementById("ad_title").value;
-					if(l=="")
+					var i = document.getElementById("ad_title").value;
+					if(i=="")
                 {
                     document.getElementById('at').style.display = "block";
 
-                    document.getElementById('at').innerHTML="**Please Enter Advertisement Title";
+                    document.getElementById('at').innerHTML="**Please Enter Advertisment Title";
                     return false;
                 }
                 else{
 						document.getElementById('at').style.display = "none";
 
 					}
-			    var m = document.getElementById("add_info").value;
-					if(m=="")
+			    var j = document.getElementById("add_info").value;
+					if(j=="")
                 {
                     document.getElementById('ai').style.display = "block";
 
@@ -248,8 +215,6 @@
 
 
                                                             </div>
-
-
                                                             <div class="u-s-m-b-30">
 
                                                                        <label class="gl-label" for="furnish">Furnishing *</label>
@@ -324,108 +289,25 @@
                                                             <span id="rt" style="color: red;"></span>
                                                             </div>
                                                         </div>
-
-
-
-                                                         <div class="gl-inline">
-
-
-
-
-                                                        </div>
-                                                         <div class="gl-inline">
-                                                            <div class="u-s-m-b-30">
-
-                                                                     <label class="gl-label" for="type">State *</label>
-                                                                 <select class="select-box select-box--primary-style" name="furnish" id="state" data-bill="" onblur="return validate()" onKeyUp="return validate()">
-                                                    <option selected value="">Choose the Type</option>
-                                                    <option value="Furnished">Andhra Pradesh</option>
-                                                    <option value="Semi-Furnished">Arunachal Pradesh</option>
-                                                    <option value="Unfurnished">Assam</option>
-                                                    <option value="Furnished">Bihar</option>
-                                                    <option value="Semi-Furnished">Chhattisgarh</option>
-                                                    <option value="Unfurnished">Goa</option>
-                                                    <option value="Furnished">Gujarat</option>
-                                                    <option value="Semi-Furnished">Haryana</option>
-                                                    <option value="Unfurnished">Himachal Pradesh</option>
-                                                    <option value="Furnished">Jammu and Kashmir</option>
-                                                    <option value="Semi-Furnished">Jharkhand</option>
-                                                    <option value="Unfurnished">Karnataka</option>
-                                                                    <option value="Unfurnished">Kerala</option>
-                                                    <option value="Furnished">Madhya Pradesh</option>
-                                                    <option value="Semi-Furnished">Maharashtra</option>
-                                                    <option value="Unfurnished">Manipur</option>
-                                                    <option value="Furnished">Meghalaya</option>
-                                                    <option value="Semi-Furnished">Mizoram</option>
-                                                    <option value="Unfurnished">Nagaland</option>
-                                                    <option value="Furnished">Odisha</option>
-                                                    <option value="Semi-Furnished">Punjab</option>
-                                                    <option value="Unfurnished">Rajasthan</option>
-                                                    <option value="Furnished">Sikkim</option>
-                                                    <option value="Furnished">Tamil Nadu</option>
-                                                    <option value="Semi-Furnished">Telangana</option>
-                                                    <option value="Unfurnished">Tripura</option>
-                                                    <option value="Furnished">Uttar Pradesh</option>
-                                                    <option value="Semi-Furnished">Uttarakhand</option>
-                                                    <option value="Unfurnished">West Bengal</option>
-
-                                                </select><span id="sta" style="color: red;"></span>
-
-
-
-
-
-                                                            </div>
-                                                             <div class="u-s-m-b-30">
-
-                                                                     <label class="gl-label" for="type">Place*</label>
-                                                                    <input class="input-text input-text--primary-style" type="text" id="place" name="builtup" placeholder="Enter Place" onblur="return validate()" onKeyUp="return validate()">
-
-                                                </select><span id="pl" style="color: red;"></span>
-
-
-
-                                                            </div>
-
-
-
-                                                        </div>
-
                                                         <div class="gl-inline">
 
                                                             <div class="u-s-m-b-30">
 
-                                                                <label class="gl-label" for="ad_title">Street*</label>
+                                                                <label class="gl-label" for="ad_title">Ad title *</label>
 
-                                                                <input class="input-text input-text--primary-style" type="text" name="ad_title" id="street" placeholder="Key features of your item" onblur="return validate()" onKeyUp="return validate()">
-                                                            <span id="st" style="color: red;"></span>
+                                                                <input class="input-text input-text--primary-style" type="text" name="ad_title" id="ad_title" placeholder="Key features of your item" onblur="return validate()" onKeyUp="return validate()">
+                                                            <span id="at" style="color: red;"></span>
                                                             </div>
                                                             <div class="u-s-m-b-30">
 
-                                                                <label class="gl-label" for="add_info">Ad title *</label>
+                                                                <label class="gl-label" for="add_info">Additional Information *</label>
 
                                                                 <input class="input-text input-text--primary-style" type="text" id="add_info" name="add_info" placeholder="Include conditon,features and reason for selling" onblur="return validate()" onKeyUp="return validate()" >
                                                             <span id="ai" style="color: red;"></span>
                                                             </div>
                                                         </div>
 
-
-
-
-
-                                                        <div class="gl-inline">
-
-                                                            <div class="u-s-m-b-30">
-
-                                                                <label class="gl-label" for="ad_title">Additional Information*</label>
-
-                                                                <input class="input-text input-text--primary-style" type="text" name="ad_title" id="ad_title" placeholder="Key features of your item" onblur="return validate()" onKeyUp="return validate()">
-                                                            <span id="at" style="color: red;"></span>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <button class="btn btn--e-brand-b-2" type="submit">RENT IT</button>
+                                                        <button class="btn btn--e-brand-b-2" type="submit">SAVE</button>
                                                     </form>
                                                 </div>
                                             </div>
