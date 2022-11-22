@@ -1,0 +1,326 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+                                    {% include 'alerts2.html' %}
+             <script>
+                                          setTimeout(function(){
+                                            if ($('#message').length > 0){
+                                              $('#message').remove();
+                                              }
+                                            },3000)
+
+                                          </script>
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="{% url 'home' %}">Home</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="#">My Account</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="dash">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12">
+
+                                    <!--====== Dashboard Features ======-->
+                                    {% include 'dashboard/dash-feature.html' %}
+                                    <!--====== End - Dashboard Features ======-->
+                                </div>
+                                <div class="col-lg-9 col-md-12">
+                                    <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                        <div class="dash__pad-2">
+                                            <h1 class="dash__h1 u-s-m-b-14">My Products</h1>
+
+                                            <span class="dash__text u-s-m-b-30">Here you can see all products that have been Kept for rent.</span>
+<!--                                            <form class="m-order u-s-m-b-30">-->
+<!--                                                <div class="m-order__select-wrapper">-->
+
+<!--                                                    <label class="u-s-m-r-8" for="my-order-sort">Show:</label><select class="select-box select-box&#45;&#45;primary-style" id="my-order-sort">-->
+<!--                                                        <option selected>Last 5 orders</option>-->
+<!--                                                        <option>Last 15 days</option>-->
+<!--                                                        <option>Last 30 days</option>-->
+<!--                                                        <option>Last 6 months</option>-->
+<!--                                                        <option>Orders placed in 2018</option>-->
+<!--                                                        <option>All Orders</option>-->
+<!--                                                    </select></div>-->
+<!--                                            </form>-->
+                                            <div class="m-order__list">
+                                                {% for h_product in h_products %}
+
+                                                <div class="m-order__get">
+
+                                                    <div class="manage-o__header u-s-m-b-30">
+                                                        <div class="dash-l-r">
+                                                            <div>
+<!--                                                                <div class="manage-o__text-2 u-c-secondary">Order #305423126</div>-->
+<!--                                                                <div class="manage-o__text u-c-silver">Placed on 26 Oct 2016 09:08:37</div>-->
+                                                            </div>
+                                                            <div>
+                                                                <div class="dash__link dash__link--brand">
+
+                                                                    <a href="{% url 'managehouse' h_product.id %}">MANAGE</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="manage-o__description">
+                                                        <div class="description__container">
+                                                            <div class="description__img-wrap">
+
+                                                                <img class="u-img-fluid"  src="{{h_product.images.url}}" style="width:600 height:600;" alt=""></div>
+                                                            <div class="description-title">{{h_product.ad_title}}</div>
+                                                        </div>
+                                                        <div class="description__info-wrap">
+                                                            <div>
+
+                                                                <span class="manage-o__badge badge--processing">{{h_product.rent}}/month</span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Bedrooms:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{h_product.bedroom}}</span></span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Bathrooms:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{h_product.bathroom}}</span></span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+
+
+                                                {% for c_product in c_products %}
+
+                                                <div class="m-order__get">
+
+                                                    <div class="manage-o__header u-s-m-b-30">
+                                                        <div class="dash-l-r">
+                                                            <div>
+<!--                                                                <div class="manage-o__text-2 u-c-secondary">Order #305423126</div>-->
+<!--                                                                <div class="manage-o__text u-c-silver">Placed on 26 Oct 2016 09:08:37</div>-->
+                                                            </div>
+                                                            <div>
+                                                                <div class="dash__link dash__link--brand">
+
+                                                                    <a href="{% url 'managecar' c_product.id %}">MANAGE</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="manage-o__description">
+                                                        <div class="description__container">
+                                                            <div class="description__img-wrap">
+
+                                                                <img class="u-img-fluid"  src="{{c_product.images.url}}" style="width:600 height:600;" alt=""></div>
+                                                            <div class="description-title">{{c_product.ad_title}}</div>
+                                                        </div>
+                                                        <div class="description__info-wrap">
+                                                            <div>
+
+                                                                <span class="manage-o__badge badge--processing">{{c_product.rent}}/month</span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Brand:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{c_product.brand}}</span></span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Fuel:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{c_product.fuel}}</span></span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+
+
+                                                {% for b_product in b_products %}
+
+                                                <div class="m-order__get">
+
+                                                    <div class="manage-o__header u-s-m-b-30">
+                                                        <div class="dash-l-r">
+                                                            <div>
+<!--                                                                <div class="manage-o__text-2 u-c-secondary">Order #305423126</div>-->
+<!--                                                                <div class="manage-o__text u-c-silver">Placed on 26 Oct 2016 09:08:37</div>-->
+                                                            </div>
+                                                            <div>
+                                                                <div class="dash__link dash__link--brand">
+
+                                                                    <a href="{% url 'managebike' b_product.id %}">MANAGE</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="manage-o__description">
+                                                        <div class="description__container">
+                                                            <div class="description__img-wrap">
+
+                                                                <img class="u-img-fluid"  src="{{b_product.images.url}}" style="width:600 height:600;" alt=""></div>
+                                                            <div class="description-title">{{b_product.ad_title}}</div>
+                                                        </div>
+                                                        <div class="description__info-wrap">
+                                                            <div>
+
+                                                                <span class="manage-o__badge badge--processing">{{b_product.rent}}/month</span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Brand:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{b_product.brand}}</span></span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">KM Driven:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{b_product.driven}}</span></span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+
+
+
+                                                 {% for f_product in f_products %}
+
+                                                <div class="m-order__get">
+
+                                                    <div class="manage-o__header u-s-m-b-30">
+                                                        <div class="dash-l-r">
+                                                            <div>
+<!--                                                                <div class="manage-o__text-2 u-c-secondary">Order #305423126</div>-->
+<!--                                                                <div class="manage-o__text u-c-silver">Placed on 26 Oct 2016 09:08:37</div>-->
+                                                            </div>
+                                                            <div>
+                                                                <div class="dash__link dash__link--brand">
+                                                                    <a href="{% url 'managefurniture' f_product.id %}">MANAGE</a>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="manage-o__description">
+                                                        <div class="description__container">
+                                                            <div class="description__img-wrap">
+
+                                                                <img class="u-img-fluid"  src="{{f_product.images.url}}" style="width:600 height:600;" alt=""></div>
+                                                            <div class="description-title">{{f_product.ad_title}}</div>
+                                                        </div>
+                                                        <div class="description__info-wrap">
+                                                            <div>
+
+                                                                <span class="manage-o__badge badge--processing">{{f_product.rent}}/month</span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Type:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{f_product.type}}</span></span>
+                                                            </div>
+<!--                                                            <div>-->
+
+<!--                                                                <span class="manage-o__text-2 u-c-silver">Fuel:-->
+
+<!--                                                                    <span class="manage-o__text-2 u-c-secondary">{{b_product.fuel}}</span></span>-->
+<!--                                                            </div>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+
+
+                                                     {% for o_product in o_products %}
+
+                                                <div class="m-order__get">
+
+                                                    <div class="manage-o__header u-s-m-b-30">
+                                                        <div class="dash-l-r">
+                                                            <div>
+<!--                                                                <div class="manage-o__text-2 u-c-secondary">Order #305423126</div>-->
+<!--                                                                <div class="manage-o__text u-c-silver">Placed on 26 Oct 2016 09:08:37</div>-->
+                                                            </div>
+                                                            <div>
+                                                                <div class="dash__link dash__link--brand">
+                                                                    <a href="{% url 'manageother' o_product.id %}">MANAGE</a>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="manage-o__description">
+                                                        <div class="description__container">
+                                                            <div class="description__img-wrap">
+
+                                                                <img class="u-img-fluid"  src="{{o_product.images.url}}" style="width:600 height:600;" alt=""></div>
+                                                            <div class="description-title">{{o_product.ad_title}}</div>
+                                                        </div>
+                                                        <div class="description__info-wrap">
+                                                            <div>
+
+                                                                <span class="manage-o__badge badge--processing">{{o_product.rent}}/month</span></div>
+<!--                                                            <div>-->
+
+<!--                                                                <span class="manage-o__text-2 u-c-silver">Brand:-->
+
+<!--                                                                    <span class="manage-o__text-2 u-c-secondary">{{f_product.brand}}</span></span></div>-->
+<!--&lt;!&ndash;                                                            <div>&ndash;&gt;-->
+
+<!--                                                                <span class="manage-o__text-2 u-c-silver">Fuel:-->
+
+<!--                                                                    <span class="manage-o__text-2 u-c-secondary">{{b_product.fuel}}</span></span></div>-->
+<!--                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+        </div>
+        </div>
+        <!--====== End - App Content ======-->
+
+                {% endblock %}

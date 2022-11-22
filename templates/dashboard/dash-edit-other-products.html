@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="{% url 'home' %}">Home</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="#">My Account</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="dash">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12">
+
+                                    <!--====== Dashboard Features ======-->
+                                    {% include 'dashboard/dash-feature.html' %}
+
+                                    <!--====== End - Dashboard Features ======-->
+                                </div>
+                                <div class="col-lg-9 col-md-12">
+<!--             <script>-->
+<!--                 function validate()-->
+<!--                {-->
+<!--					var a=document.getElementById("type").value;-->
+<!--					var s=/^[a-zA-Z]+$/;-->
+
+<!--					   if(a=="")-->
+<!--                {-->
+<!--                    document.getElementById('te').style.display = "block";-->
+
+<!--                    document.getElementById('te').innerHTML="**Please enter product type";-->
+<!--                    return false;-->
+<!--                }-->
+<!--                if(a!="" && s.test(a)==false){-->
+
+<!--						document.getElementById('te').style.display = "block";-->
+<!--						document.getElementById('te').innerHTML = "**Invalid product type";-->
+<!--						return false;-->
+<!--					}-->
+<!--                else{-->
+<!--						document.getElementById('te').style.display = "none";-->
+
+<!--					}-->
+<!--					 var expr = /^[0-9]+$/;-->
+<!--			    var e = document.getElementById("rent").value;-->
+
+
+<!--				if(e=="")-->
+<!--                {-->
+<!--                    document.getElementById('rt').style.display = "block";-->
+
+<!--                    document.getElementById('rt').innerHTML="**Please Enter rent/month";-->
+<!--                    return false;-->
+<!--                }-->
+<!--					else if(e!="" && expr.test(e)==false){-->
+<!--						document.getElementById('rt').style.display = "block";-->
+<!--						document.getElementById('rt').innerHTML = "**Invalid Input";-->
+<!--						return false;-->
+<!--								}-->
+<!--								else{-->
+<!--						document.getElementById('rt').style.display = "none";-->
+
+<!--					}-->
+
+<!--									var g = document.getElementById("images").value;-->
+
+<!--				if(g=="")-->
+<!--                {-->
+<!--                    document.getElementById('img').style.display = "block";-->
+
+<!--                    document.getElementById('img').innerHTML="**Please upload image";-->
+<!--                    return false;-->
+<!--                }-->
+<!--				else{-->
+<!--						document.getElementById('img').style.display = "none";-->
+
+<!--					}-->
+<!--										var i = document.getElementById("ad_title").value;-->
+<!--					if(i=="")-->
+<!--                {-->
+<!--                    document.getElementById('at').style.display = "block";-->
+
+<!--                    document.getElementById('at').innerHTML="**Please Enter Advertisment Title";-->
+<!--                    return false;-->
+<!--                }-->
+<!--                else{-->
+<!--						document.getElementById('at').style.display = "none";-->
+
+
+<!--					}-->
+<!--								    var j = document.getElementById("add_info").value;-->
+<!--					if(j=="")-->
+<!--                {-->
+<!--                    document.getElementById('ai').style.display = "block";-->
+
+<!--                    document.getElementById('ai').innerHTML="**Please Enter Additional Information";-->
+<!--                    return false;-->
+<!--                }-->
+<!--                else{-->
+<!--						document.getElementById('ai').style.display = "none";-->
+<!--			            return true;-->
+
+<!--					}-->
+
+<!--			}-->
+<!--			</script>-->
+
+            <!--====== Section 2 ======-->
+<!--            <div class="u-s-p-b-60">-->
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="dash">
+                        <div class="container">
+                            <div class="row ">
+                                <div class="col-lg-9 col-md-12">
+                                    <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white">
+                                        <div class="dash__pad-2">
+                                            <h1 class="dash__h1 u-s-m-b-14">Edit the details</h1>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <form class="dash-edit-p" method="post" action="{% url 'manageother' o_product.id %}"  enctype="multipart/form-data" onsubmit="return validate();">
+                                                        {% csrf_token %}
+                                                          <div class="gl-inline">
+
+                                                            <div class="u-s-m-b-30">
+
+                                                                <label class="gl-label" for="type">Type  *</label>
+
+                                                                <input class="input-text input-text--primary-style" type="text" id="type" name="type" value="{{o_product.type}}" placeholder="Enter the type" onblur="return validate()" onKeyUp="return validate()">
+                                                                <span id="te" style="color: red;"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-inline">
+
+                                                            <div class="u-s-m-b-30">
+
+                                                                <label class="gl-label" for="images">Image *</label>
+
+                                                                <input class="input-text input-text--primary-style" type="file" name="images" id="images" placeholder="Image" onblur="return validate()" onKeyUp="return validate()" accept="image/png, image/jpeg">
+                                                             <span id="img" style="color:red"> </span>
+
+                                                            </div>
+                                                            <div class="u-s-m-b-30">
+
+                                                                <label class="gl-label" for="rent">Rent/Month *</label>
+
+                                                                <input class="input-text input-text--primary-style" type="text" id="rent" name="rent" value="{{o_product.rent}}" placeholder="Rent/Month" onblur="return validate()" onKeyUp="return validate()">
+                                                                <span id="rt" style="color: red;"></span>
+
+                                                            </div>
+                                                        </div>
+
+                                                         <div class="gl-inline">
+                                                              <div class="u-s-m-b-30">
+
+                                                                <label class="gl-label" for="location">Location/street of the product*</label>
+
+                                                                <input class="input-text input-text--primary-style" type="text" name="location" id="location" value="{{o_product.location}}" placeholder="Location/street" onblur="return validate()" onKeyUp="return validate()">
+                                                            <span id="st" style="color: red;"></span>
+                                                            </div>
+                                                             <div class="u-s-m-b-30">
+
+                                                                     <label class="gl-label" for="city">District/City*</label>
+                                                                    <input class="input-text input-text--primary-style" type="text" id="city" name="city" value="{{o_product.city}}" placeholder="District/City" onblur="return validate()" onKeyUp="return validate()">
+
+                                                </select><span id="pl" style="color: red;"></span>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                        <div class="gl-inline">
+
+                                                            <div class="u-s-m-b-30">
+
+                                                                <label class="gl-label" for="state">State *</label>
+                                                                <select class="select-box select-box--primary-style" name="state" id="state" data-bill="" onblur="return validate()" onKeyUp="return validate()">
+                                                    <option selected value="{{o_product.type}}">{{o_product.state}}"</option>
+                                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    <option value="Semi-Furnished">Arunachal Pradesh</option>
+                                                    <option value="Unfurnished">Assam</option>
+                                                    <option value="Furnished">Bihar</option>
+                                                    <option value="Semi-Furnished">Chhattisgarh</option>
+                                                    <option value="Unfurnished">Goa</option>
+                                                    <option value="Furnished">Gujarat</option>
+                                                    <option value="Semi-Furnished">Haryana</option>
+                                                    <option value="Unfurnished">Himachal Pradesh</option>
+                                                    <option value="Furnished">Jammu and Kashmir</option>
+                                                    <option value="Semi-Furnished">Jharkhand</option>
+                                                    <option value="Unfurnished">Karnataka</option>
+                                                                    <option value="Unfurnished">Kerala</option>
+                                                    <option value="Furnished">Madhya Pradesh</option>
+                                                    <option value="Semi-Furnished">Maharashtra</option>
+                                                    <option value="Unfurnished">Manipur</option>
+                                                    <option value="Furnished">Meghalaya</option>
+                                                    <option value="Semi-Furnished">Mizoram</option>
+                                                    <option value="Unfurnished">Nagaland</option>
+                                                    <option value="Furnished">Odisha</option>
+                                                    <option value="Semi-Furnished">Punjab</option>
+                                                    <option value="Unfurnished">Rajasthan</option>
+                                                    <option value="Furnished">Sikkim</option>
+                                                    <option value="Furnished">Tamil Nadu</option>
+                                                    <option value="Semi-Furnished">Telangana</option>
+                                                    <option value="Unfurnished">Tripura</option>
+                                                    <option value="Furnished">Uttar Pradesh</option>
+                                                    <option value="Semi-Furnished">Uttarakhand</option>
+                                                    <option value="Unfurnished">West Bengal</option>
+
+                                                </select><span id="sta" style="color: red;"></span>
+
+
+
+
+
+                                                            </div>
+                                                            <div class="u-s-m-b-30">
+
+                                                                <label class="gl-label" for="ad_title">Ad title *</label>
+
+                                                                <input class="input-text input-text--primary-style" type="text" id="ad_title" name="ad_title" value="{{o_product.ad_title}}" placeholder="Key features of your item" onblur="return validate()" onKeyUp="return validate()" >
+                                                            <span id="ai" style="color: red;"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-inline">
+
+                                                            <div class="u-s-m-b-30">
+
+                                                                <label class="gl-label" for="add_info">Additional Information *</label>
+
+                                                                <input class="input-text input-text--primary-style" type="text" id="add_info" name="add_info" value="{{o_product.add_info}}" placeholder="Include conditon,features and reason for selling" onblur="return validate()" onKeyUp="return validate()">
+                                                                <span id="aii" style="color: red;"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <button class="btn btn--e-brand-b-2" type="submit">RENT IT</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+        </div>
+        </div>
+{% endblock %}
